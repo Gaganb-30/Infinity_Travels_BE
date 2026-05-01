@@ -28,6 +28,14 @@ const packageSchema = new mongoose.Schema({
     max: { type: Number, required: true },
     currency: { type: String, default: '₹' },
   },
+  priceRange3Star: {
+    min: { type: Number },
+    max: { type: Number },
+  },
+  priceRange4Star: {
+    min: { type: Number },
+    max: { type: Number },
+  },
   image: { type: String },
   galleryImages: [{ type: String }],
   badge: { type: String }, // "Best Seller", "New", "Trending"
