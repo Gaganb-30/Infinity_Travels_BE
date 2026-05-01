@@ -39,6 +39,8 @@ const packageSchema = new mongoose.Schema({
   hotelStandards: [{
     tier: { type: String },
     priceAdjustmentPercent: { type: Number, default: 0 },
+    priceMin: { type: Number },
+    priceMax: { type: Number },
   }],
   type: { type: String, enum: ['Coastal', 'Mountain', 'Urban', 'Desert', 'Forest', 'Cultural', 'Adventure', 'Island', 'Heritage', 'Nature'] },
   rating: { type: Number, default: 0 },

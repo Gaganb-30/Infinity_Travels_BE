@@ -36,7 +36,7 @@ app.get('/api/health', (req, res) => {
 
 // WhatsApp config endpoint
 app.get('/api/config/whatsapp', (req, res) => {
-  res.json({ whatsappNumber: process.env.WHATSAPP_NUMBER || '919876543210' });
+  res.json({ whatsappNumber: process.env.WHATSAPP_NUMBER || '919310798965' });
 });
 
 // Connect to MongoDB and start server
