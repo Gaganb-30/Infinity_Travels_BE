@@ -79,17 +79,17 @@ router.get('/sitemap.xml', async (req, res) => {
 /**
  * GET /robots.txt
  */
-router.get('/robots.txt', (req, res) => {
-  const robotsTxt = `User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /api/
+// router.get('/robots.txt', (req, res) => {
+//   const robotsTxt = `User-agent: *
+// Allow: /
+// Disallow: /admin/
+// Disallow: /api/
 
-Sitemap: ${SITE_URL}/sitemap.xml
-`;
+// Sitemap: ${SITE_URL}/sitemap.xml
+// `;
 
-  res.set('Content-Type', 'text/plain');
-  res.send(robotsTxt);
-});
+//   res.set('Content-Type', 'text/plain');
+//   res.send(robotsTxt);
+// });
 
 module.exports = router;
