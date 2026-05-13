@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => {
 
 // WhatsApp config endpoint
 app.get('/api/config/whatsapp', (req, res) => {
-  res.json({ whatsappNumber: process.env.WHATSAPP_NUMBER || '919310798965' });
+  res.json({ whatsappNumber: process.env.WHATSAPP_NUMBER || '917291099670' });
 });
 
 // Connect to MongoDB and start server
@@ -51,7 +51,7 @@ mongoose
   .then(() => {
     console.log('✅ Connected to MongoDB');
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running on ${process.env.BACKEND_URL || 'http://localhost:5000'}`);
     });
   })
   .catch((err) => {
