@@ -5,6 +5,7 @@ const Destination = require('../models/Destination');
 const Package = require('../models/Package');
 const Testimonial = require('../models/Testimonial');
 const ContactInquiry = require('../models/ContactInquiry');
+const { pingSitemapUpdate } = require('../utils/sitemapPing');
 
 // All admin routes require authentication
 router.use(authMiddleware);
@@ -27,6 +28,7 @@ router.get('/destinations', async (req, res) => {
 router.post('/destinations', async (req, res) => {
   try {
     const destination = await Destination.create(req.body);
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.status(201).json(destination);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -38,6 +40,7 @@ router.put('/destinations/:id', async (req, res) => {
   try {
     const destination = await Destination.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!destination) return res.status(404).json({ error: 'Destination not found' });
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.json(destination);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -49,6 +52,7 @@ router.delete('/destinations/:id', async (req, res) => {
   try {
     const destination = await Destination.findByIdAndDelete(req.params.id);
     if (!destination) return res.status(404).json({ error: 'Destination not found' });
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.json({ message: 'Destination deleted' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -73,6 +77,7 @@ router.get('/packages', async (req, res) => {
 router.post('/packages', async (req, res) => {
   try {
     const pkg = await Package.create(req.body);
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.status(201).json(pkg);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -84,6 +89,7 @@ router.put('/packages/:id', async (req, res) => {
   try {
     const pkg = await Package.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!pkg) return res.status(404).json({ error: 'Package not found' });
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.json(pkg);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -95,6 +101,7 @@ router.delete('/packages/:id', async (req, res) => {
   try {
     const pkg = await Package.findByIdAndDelete(req.params.id);
     if (!pkg) return res.status(404).json({ error: 'Package not found' });
+    pingSitemapUpdate().catch(() => {}); // non-blocking
     res.json({ message: 'Package deleted' });
   } catch (err) {
     res.status(500).json({ error: err.message });

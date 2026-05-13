@@ -20,6 +20,7 @@ const contactRoutes = require('./routes/contact');
 const searchRoutes = require('./routes/search');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
+const sitemapRoutes = require('./routes/sitemap');
 
 app.use('/api/destinations', destinationRoutes);
 app.use('/api/packages', packageRoutes);
@@ -28,6 +29,9 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);
+
+// Sitemap & robots.txt (served at root, not under /api)
+app.use(sitemapRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
